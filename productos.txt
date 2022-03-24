@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Macbook Air",
+    "price": 1500,
+    "thumbnail": "url imagen",
+    "id": 1
+  },
+  {
+    "title": "Macbook Pro",
+    "price": 1700,
+    "thumbnail": "url imagen",
+    "id": 2
+  },
+  {
+    "title": "Mac Studio",
+    "price": 2800,
+    "thumbnail": "url imagen",
+    "id": 3
+  },
+  {
+    "title": "AirpodsPro",
+    "price": 700,
+    "thumbnail": "url imagen",
+    "id": 4
+  },
+  {
+    "title": "iPad Mini",
+    "price": 800,
+    "thumbnail": "url imagen",
+    "id": 6
+  },
+  {
+    "title": "iPad Pro",
+    "price": 1200,
+    "thumbnail": "url imagen",
+    "id": 7
+  },
+  {
+    "title": "iPhone 13 Pro",
+    "price": 1500,
+    "thumbnail": "url imagen",
+    "id": 8
+  }
+]
