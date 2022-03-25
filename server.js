@@ -3,12 +3,18 @@ const app = express ()
 const PORT = 8080
 const Contenedor = require ('./contenedor.js')
 
-let contenedorHere = new Contenedor
+let contenedor = new Contenedor
 
 
-app.get ('/productos', (req, res) => {
-    res.send (contenedorHere.getAll())
+app.get ('/productos', async (req, res) => {
+    res.send (await contenedor.getAll())
 })
+
+app.get ('/productoRandom', async (req, res) => {
+    res.send (await contenedor.getRandom())
+})
+
+
 
 const server = app.listen(PORT, () => {
     console.log (`Servidor escuchando en el puerto ${server.address().port}`)

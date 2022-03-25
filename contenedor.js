@@ -16,8 +16,7 @@ class Contenedor {
         this.thumbnail = thumbnail
     }
 
-    save (producto) {
-        async function grabarTxt () {
+    async save (producto) {
             try {
                 
                 let contenido = await fs.promises.readFile ('./productos.txt', 'utf-8')
@@ -52,12 +51,9 @@ class Contenedor {
             catch (err) {
                 console.log('Hubo un error', err)
             }
-        }
-        grabarTxt ()
     }
 
-    getById (number) {
-        async function buscarPorId () {
+    async getById (number) {
             try {
                 let contenido = await fs.promises.readFile ('./productos.txt', 'utf-8')
                 let contenidoToObj = JSON.parse(contenido)
@@ -71,27 +67,21 @@ class Contenedor {
             catch (err) {
                 console.log ('Hubo un error buscando el ID');
             }
-        }
-        buscarPorId();
     }
 
-    getAll () {
-        async function traerTodos () {
+    async getAll () { 
             try {
                 let contenido = await fs.promises.readFile ('./productos.txt', 'utf-8')
                 let contenidoToObj = JSON.parse(contenido)
 
-                console.log(contenidoToObj)
+                return contenidoToObj
             }
             catch (err) {
                 console.log(err);
             }
-        }
-        traerTodos ();
     }
 
-    deleteById (number) {
-        async function borrarProducto () {
+    async deleteById (number) {
             try {
                 let contenido = await fs.promises.readFile ('./productos.txt', 'utf-8')
                 let contenidoToObj = JSON.parse(contenido)
@@ -110,12 +100,9 @@ class Contenedor {
             catch (err) {
                 console.log('Hubo un error, no se encontró el producto con el id ingresado', err)
             }
-        }
-        borrarProducto()
     }
 
-    deleteAll () {
-        async function borrarTodo() {
+    async deleteAll () {
             try {
                 let contenido = await fs.promises.readFile ('./productos.txt', 'utf-8')
                 let contenidoToObj = JSON.parse (contenido)
@@ -130,8 +117,26 @@ class Contenedor {
             catch (err) {
                 console.log ('Error al querer borrar un elemento', err);
             }
+    }
+
+    async getRandom () {
+        try {
+            let contenido = await fs.promises.readFile ('./productos.txt', 'utf-8')
+            let contenidoToObj = JSON.parse(contenido)
+
+            let numbRandom = Math.floor(Math.random()*contenidoToObj.length+1);
+            let elementoEncontrado = contenidoToObj.find (element => element.id === numbRandom);
+
+            if (elementoEncontrado === undefined) {
+                console.log ('Elemento no encontrado')
+            } else {
+                return elementoEncontrado
+            }
+
         }
-        borrarTodo()
+        catch (err) {
+            console.log ('Hubo un error, no funcionó la función getRandom()')
+        }
     }
 }
 
@@ -159,6 +164,7 @@ let iPhone13Pro = new Producto ("iPhone 13 Pro", 1500, "url imagen")
 
 // contenedor.getById(4)
 // contenedor.getAll()
+// contenedor.getRandom();
 
 // contenedor.deleteById(5);
 // contenedor.deleteAll()
